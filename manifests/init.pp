@@ -25,5 +25,7 @@ class sudo (
   contain sudo::config
   if $install_package {
     contain sudo::install
+    Class['sudo::install']
+    -> Class['sudo::config']
   }
 }
