@@ -10,11 +10,17 @@
 #   What value for 'ensure' to pass to resource type package.
 # @param package_provider
 #   Override the default package provider.
+# @param sudoers
+#   The main configuration file for the sudoers plugin.
+# @param includedir
+#   The dropin directory for additional config files.
 class sudo (
   Boolean $install_package           = true,
   String[1] $package_name            = 'sudo',
   String[1] $package_ensure          = 'present',
   Optional[String] $package_provider = undef,
+  Stdlib::Absolutepath $sudoers    = '/etc/sudoers',
+  Stdlib::Absolutepath $includedir = '/etc/sudoers.d',
 ) {
   contain sudo::config
   if $install_package {
