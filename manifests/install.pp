@@ -1,8 +1,11 @@
-# @summary A short summary of the purpose of this class
+# @summary Installs sudo
 #
-# A description of what this class does
-#
-# @example
-#   include sudo::install
+# @api private
 class sudo::install {
+  assert_private()
+
+  package { $sudo::package_name:
+    ensure   => $sudo::package_ensure,
+    provider => $sudo::package_provider,
+  }
 }
