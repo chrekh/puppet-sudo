@@ -14,13 +14,16 @@
 #   The main configuration file for the sudoers plugin.
 # @param includedir
 #   The dropin directory for additional config files.
+# @param use_includedir
+#   Add entry for includedir to main sudoer file if true.
 class sudo (
   Boolean $install_package           = true,
   String[1] $package_name            = 'sudo',
   String[1] $package_ensure          = 'present',
   Optional[String] $package_provider = undef,
-  Stdlib::Absolutepath $sudoers    = '/etc/sudoers',
-  Stdlib::Absolutepath $includedir = '/etc/sudoers.d',
+  Stdlib::Absolutepath $sudoers      = '/etc/sudoers',
+  Stdlib::Absolutepath $includedir   = '/etc/sudoers.d',
+  Boolean $use_includedir            = true,
 ) {
   contain sudo::config
   if $install_package {
