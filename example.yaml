@@ -25,7 +25,7 @@ sudo::conf:
       ADMINGRP:
         - adm
         - oper
-    hostalias:
+    host_alias:
       SPARC:
         - bigtime
         - eclipse
