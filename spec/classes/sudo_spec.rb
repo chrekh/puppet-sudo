@@ -20,6 +20,39 @@ describe 'sudo' do
       {
         conf: {
           _sudoers: {
+            "defaults": [
+              {
+                "Defaults": [
+                  'syslog=auth',
+                ]
+              },
+              {
+                "Defaults>root": [
+                  '!set_logname',
+                ]
+              },
+              {
+                "Defaults:FULLTIMERS": [
+                  '!lecture',
+                ]
+              },
+              {
+                "Defaults:millert": [
+                  '!authenticate',
+                ]
+              },
+              {
+                "Defaults@SERVERS": [
+                  'log_year',
+                  'logfile=/var/log/sudo.log',
+                ]
+              },
+              {
+                "Defaults!PAGERS": [
+                  'noexec',
+                ]
+              },
+            ],
             user_alias: {
               FULLTIMERS: [
                 'millert',
@@ -66,6 +99,30 @@ describe 'sudo' do
     it {
       is_expected.to contain_file('/etc/sudoers')
         .with_content(%r{^Cmnd_Alias PRINTING = /usr/sbin/lpc, /usr/bin/lprm$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Defaults syslog=auth$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Defaults>root !set_logname$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Defaults:FULLTIMERS !lecture$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Defaults:millert !authenticate$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Defaults@SERVERS log_year, logfile=/var/log/sudo.log$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Defaults!PAGERS noexec$})
     }
   end
 end

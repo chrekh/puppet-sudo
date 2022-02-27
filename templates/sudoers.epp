@@ -1,5 +1,14 @@
 ## Managed by puppet class sudo
 ## Do not edit
+<% if $defaults { -%>
+
+# Override built-in defaults
+<%   $defaults.each |$default| { -%>
+<%     $default.each |$name,$value| { -%>
+<%= $name %> <%= $value.join(', ') %>
+<%     } -%>
+<%   } -%>
+<% } -%>
 <% if $user_alias { -%>
 
 # User alias specification

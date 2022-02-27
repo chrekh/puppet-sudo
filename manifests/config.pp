@@ -20,6 +20,7 @@ class sudo::config {
         mode    => '0400',
         content => epp('sudo/sudoers.epp',{
           dest        => $destination,
+          defaults    => $sudo::conf[$destination]['defaults'],
           user_alias  => $sudo::conf[$destination]['user_alias'],
           runas_alias => $sudo::conf[$destination]['runas_alias'],
           host_alias  => $sudo::conf[$destination]['host_alias'],
