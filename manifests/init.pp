@@ -24,6 +24,7 @@ class sudo (
   Stdlib::Absolutepath $sudoers      = '/etc/sudoers',
   Stdlib::Absolutepath $includedir   = '/etc/sudoers.d',
   Boolean $use_includedir            = true,
+  Hash[String,Hash[String,Optional[Hash]]] $conf = undef,
 ) {
   contain sudo::config
   if $install_package {
