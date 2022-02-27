@@ -1,1 +1,4 @@
---- {}
+---
+sudo::conf:
+  _sudoers:
+    _empty:
