@@ -37,6 +37,34 @@ Host_Alias <%= $name %> = <%= $value.join(', ') %>
 Cmnd_Alias <%= $name %> = <%= $value.join(', ') %>
 <%   } -%>
 <% } -%>
+<% if $rules { -%>
+
+# Rules
+<%   $rules.each |$rule| { -%>
+<%     if $rule['options'] { -%>
+<%       $options = $rule['options'].join(' ') -%>
+<%     } else { -%>
+<%       $options = '' -%>
+<%     } -%>
+<%     if $rule['runas'] { -%>
+<%       if $rule['runas']['users'] { -%>
+<%         if $rule['runas']['groups'] { -%>
+<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = (<%= $rule['runas']['users'].join(',') %>:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
+<%         } else { -%>
+<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = (<%= $rule['runas']['users'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
+<%         } -%>
+<%       } else { -%>
+<%         if $rule['runas']['groups'] { -%>
+<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = (:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
+<%         } else { -%>
+<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = <%= $options %> <%= $rule['commands'].join(', ') %>
+<%         } -%>
+<%       } -%>
+<%     } else { -%>
+<%=       $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = <%= $options %> <%= $rule['commands'].join(', ') %>
+<%     } -%>
+<%   } -%>
+<% } -%>
 <% if $sudo::use_includedir and $dest == '_sudoers' { -%>
 
 ## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)

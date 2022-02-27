@@ -6,8 +6,7 @@ class sudo::config {
     $sudo::conf.keys.each | $destination | {
       if $destination == '_sudoers' {
         $file = $sudo::sudoers
-      }
-      else {
+      } else {
         unless $sudo::use_includedir {
           fail("additional configfile ${destination} can't be used when use_includedir=false")
         }
@@ -25,6 +24,7 @@ class sudo::config {
           runas_alias => $sudo::conf[$destination]['runas_alias'],
           host_alias  => $sudo::conf[$destination]['host_alias'],
           cmnd_alias  => $sudo::conf[$destination]['cmnd_alias'],
+          rules       => $sudo::conf[$destination]['rules'],
         })
       }
     }

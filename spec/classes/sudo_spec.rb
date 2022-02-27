@@ -78,7 +78,22 @@ describe 'sudo' do
                 '/usr/sbin/lpc',
                 '/usr/bin/lprm',
               ],
-            }
+            },
+            rules: [
+              {
+                commands: [
+                  '/bin/id',
+                ],
+                users: [
+                  'millert',
+                  'mikef',
+                ],
+               hosts: [
+                 'bigtime',
+                 'eclipse',
+               ]
+              },
+            ]
           }
         }
       }
@@ -123,6 +138,10 @@ describe 'sudo' do
     it {
       is_expected.to contain_file('/etc/sudoers')
         .with_content(%r{^Defaults!PAGERS noexec$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^millert,mikef bigtime,eclipse =  /bin/id$})
     }
   end
 end
