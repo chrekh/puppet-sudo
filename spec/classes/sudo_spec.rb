@@ -15,7 +15,7 @@ describe 'sudo' do
 
     it { is_expected.to contain_file('/etc/sudoers').without_content(%r{^#includedir}) }
   end
-  context 'with some user_aliaes' do
+  context 'with some config' do
     let(:params) do
       {
         conf: {
@@ -26,6 +26,25 @@ describe 'sudo' do
                 'mikef',
                 'dowdy',
               ],
+            },
+            runas_alias: {
+              ADMINGRP: [
+                'adm',
+                'oper',
+              ],
+            },
+            host_alias: {
+              SGI: [
+                'grolsch',
+                'dandelion',
+                'black',
+              ],
+            },
+            cmnd_alias: {
+              PRINTING: [
+                '/usr/sbin/lpc',
+                '/usr/bin/lprm',
+              ],
             }
           }
         }
@@ -35,6 +54,18 @@ describe 'sudo' do
     it {
       is_expected.to contain_file('/etc/sudoers')
         .with_content(%r{^User_Alias FULLTIMERS = millert, mikef, dowdy$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Runas_Alias ADMINGRP = adm, oper$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Host_Alias SGI = grolsch, dandelion, black$})
+    }
+    it {
+      is_expected.to contain_file('/etc/sudoers')
+        .with_content(%r{^Cmnd_Alias PRINTING = /usr/sbin/lpc, /usr/bin/lprm$})
     }
   end
 end

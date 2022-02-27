@@ -7,6 +7,27 @@
 User_Alias <%= $name %> = <%= $value.join(', ') %>
 <%   } -%>
 <% } -%>
+<% if $runas_alias { -%>
+
+# Runas alias specification
+<%   $runas_alias.each |$name,$value| { -%>
+Runas_Alias <%= $name %> = <%= $value.join(', ') %>
+<%   } -%>
+<% } -%>
+<% if $host_alias { -%>
+
+# Host alias specification
+<%   $host_alias.each |$name,$value| { -%>
+Host_Alias <%= $name %> = <%= $value.join(', ') %>
+<%   } -%>
+<% } -%>
+<% if $cmnd_alias { -%>
+
+# Cmnd alias specification
+<%   $cmnd_alias.each |$name,$value| { -%>
+Cmnd_Alias <%= $name %> = <%= $value.join(', ') %>
+<%   } -%>
+<% } -%>
 <% if $sudo::use_includedir and $dest == '_sudoers' { -%>
 
 ## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)

@@ -19,8 +19,11 @@ class sudo::config {
         group   => 0,
         mode    => '0400',
         content => epp('sudo/sudoers.epp',{
-          dest       => $destination,
-          user_alias => $sudo::conf[$destination]['user_alias'],
+          dest        => $destination,
+          user_alias  => $sudo::conf[$destination]['user_alias'],
+          runas_alias => $sudo::conf[$destination]['runas_alias'],
+          host_alias  => $sudo::conf[$destination]['host_alias'],
+          cmnd_alias  => $sudo::conf[$destination]['cmnd_alias'],
         })
       }
     }
