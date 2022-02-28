@@ -21,8 +21,8 @@ class sudo (
   String[1] $package_name            = 'sudo',
   String[1] $package_ensure          = 'present',
   Optional[String] $package_provider = undef,
-  Stdlib::Absolutepath $sudoers      = '/etc/sudoers',
-  Stdlib::Absolutepath $includedir   = '/etc/sudoers.d',
+  Stdlib::Unixpath $sudoers          = '/etc/sudoers',
+  Stdlib::Unixpath $includedir       = '/etc/sudoers.d',
   Boolean $use_includedir            = true,
   Hash[String,Hash[String,Optional[Variant[Array,Hash]]]] $conf = undef,
 ) {
