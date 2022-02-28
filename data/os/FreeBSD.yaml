@@ -1,0 +1,3 @@
+---
+sudo::sudoers: /usr/local/etc/sudoers
+sudo::includedir: /usr/local/etc/sudoers.d
