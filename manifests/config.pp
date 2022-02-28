@@ -3,17 +3,28 @@
 # @api private
 class sudo::config {
   if $sudo::conf {
+    if $sudo::use_includedir {
+      file { $sudo::includedir:
+        ensure => directory,
+        owner  => 0,
+        group  => 0,
+        mode   => '0400',
+      }
+    }
     $sudo::conf.keys.each | $destination | {
       if $destination == '_sudoers' {
         $file = $sudo::sudoers
+        $require_includedir = undef
       } else {
         unless $sudo::use_includedir {
           fail("additional configfile ${destination} can't be used when use_includedir=false")
         }
         $file = "${sudo::includedir}/${destination}"
+        $require_includedir = File[$sudo::includedir]
       }
       file { $file:
         ensure  => file,
+        require => $require_includedir,
         owner   => 0,
         group   => 0,
         mode    => '0400',
