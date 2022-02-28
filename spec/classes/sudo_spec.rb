@@ -94,11 +94,38 @@ describe 'sudo' do
                ]
               },
             ]
-          }
+          },
+          george: {
+            "defaults": [
+              {
+                "Defaults": [
+                  'always_set_home',
+                  'env_reset',
+                  'noexec',
+                ]
+              },
+            ],
+            rules: [
+              commands: [
+                '/bin/id',
+              ],
+              users: [
+                'millert',
+              ],
+              hosts: [
+                'bigtime',
+              ],
+            ]
+          },
         }
       }
     end
 
+    it { is_expected.to contain_file('/etc/sudoers.d/george') }
+    it {
+      is_expected.to contain_file('/etc/sudoers.d/george')
+        .without_content(%r{^#includedir /etc/sudoers.d$})
+    }
     it {
       is_expected.to contain_file('/etc/sudoers')
         .with_content(%r{^User_Alias FULLTIMERS = millert, mikef, dowdy$})
@@ -143,5 +170,12 @@ describe 'sudo' do
       is_expected.to contain_file('/etc/sudoers')
         .with_content(%r{^millert,mikef bigtime,eclipse =  /bin/id$})
     }
+    context 'with use_includedir=false' do
+      let(:params) do
+        super().merge({ 'use_includedir' => false })
+      end
+
+      it { is_expected.to compile.and_raise_error(%r{Evaluation Error}) }
+    end
   end
 end
