@@ -8,7 +8,7 @@ class sudo::config {
         ensure => directory,
         owner  => 0,
         group  => 0,
-        mode   => '0400',
+        mode   => $sudo::includedir_mode,
       }
     }
     $sudo::conf.each | $destination,$conf | {
