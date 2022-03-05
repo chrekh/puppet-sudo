@@ -18,6 +18,10 @@
 #   The filemode for the includedir
 # @param defaultmode
 #   The mode for creates files in includedir.
+# @param owner
+#   The owner for sudo configfiles.
+# @param group
+#   The group for sudo configfiles.
 # @param use_includedir
 #   Add entry for includedir to main sudoer file if true.
 class sudo (
@@ -29,6 +33,8 @@ class sudo (
   Stdlib::Unixpath $includedir       = '/etc/sudoers.d',
   Stdlib::Filemode $includedir_mode  = '750',
   Stdlib::Filemode $defaultmode      = '440',
+  String[1] $owner                   = 'root',
+  String[1] $group                   = 'root',
   Boolean $use_includedir            = true,
   Hash[String,Hash[String,Optional[Any]]] $conf = undef,
 ) {

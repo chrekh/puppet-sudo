@@ -6,8 +6,8 @@ class sudo::config {
     if $sudo::use_includedir {
       file { $sudo::includedir:
         ensure => directory,
-        owner  => 0,
-        group  => 0,
+        owner  => $sudo::owner,
+        group  => $sudo::group,
         mode   => $sudo::includedir_mode,
       }
     }
@@ -26,8 +26,8 @@ class sudo::config {
       file { $file:
         ensure  => file,
         require => $require_includedir,
-        owner   => 0,
-        group   => 0,
+        owner   => $sudo::owner,
+        group   => $sudo::group,
         mode    => $filemode,
         content => epp('sudo/sudoers.epp',{
           dest        => $destination,
