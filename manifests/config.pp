@@ -22,12 +22,13 @@ class sudo::config {
         $file = "${sudo::includedir}/${destination}"
         $require_includedir = File[$sudo::includedir]
       }
+      $filemode = if $conf['mode'] { $conf['mode'] } else { $sudo::defaultmode }
       file { $file:
         ensure  => file,
         require => $require_includedir,
         owner   => 0,
         group   => 0,
-        mode    => $conf['mode'],
+        mode    => $filemode,
         content => epp('sudo/sudoers.epp',{
           dest        => $destination,
           defaults    => $conf['defaults'],
