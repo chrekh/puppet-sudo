@@ -27,7 +27,7 @@ class sudo::config {
         require => $require_includedir,
         owner   => 0,
         group   => 0,
-        mode    => '0400',
+        mode    => $conf['mode'],
         content => epp('sudo/sudoers.epp',{
           dest        => $destination,
           defaults    => $conf['defaults'],

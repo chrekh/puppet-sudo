@@ -1,4 +1,4 @@
 ---
 sudo::conf:
   _sudoers:
-    _empty:
+    mode: '0440'
