@@ -11,7 +11,7 @@ class sudo::config {
         mode   => '0400',
       }
     }
-    $sudo::conf.keys.each | $destination | {
+    $sudo::conf.each | $destination,$conf | {
       if $destination == '_sudoers' {
         $file = $sudo::sudoers
         $require_includedir = undef
@@ -30,12 +30,12 @@ class sudo::config {
         mode    => '0400',
         content => epp('sudo/sudoers.epp',{
           dest        => $destination,
-          defaults    => $sudo::conf[$destination]['defaults'],
-          user_alias  => $sudo::conf[$destination]['user_alias'],
-          runas_alias => $sudo::conf[$destination]['runas_alias'],
-          host_alias  => $sudo::conf[$destination]['host_alias'],
-          cmnd_alias  => $sudo::conf[$destination]['cmnd_alias'],
-          rules       => $sudo::conf[$destination]['rules'],
+          defaults    => $conf['defaults'],
+          user_alias  => $conf['user_alias'],
+          runas_alias => $conf['runas_alias'],
+          host_alias  => $conf['host_alias'],
+          cmnd_alias  => $conf['cmnd_alias'],
+          rules       => $conf['rules'],
         })
       }
     }
