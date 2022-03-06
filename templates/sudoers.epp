@@ -46,24 +46,25 @@ Cmnd_Alias <%= $name %> = <%= $value.join(', ') %>
 <%     } else { -%>
 <%       $options = '' -%>
 <%     } -%>
-<%     if $rule['hosts'] { $hosts = $rule['hosts'] } else { $hosts = ['ALL'] } -%>
-<%     if $rule['commands'] { $commands = $rule['commands'] } else { $commands = ['ALL'] } -%>
+<%     if $rule['hosts'] { $hosts = $rule['hosts'].join(',') } else { $hosts = 'ALL' } -%>
+<%     if $rule['commands'] { $commands = $rule['commands'].join(', ') } else { $commands = 'ALL' } -%>
+<%     $users = $rule['users'].join(',') -%>
 <%     if $rule['runas'] { -%>
 <%       if $rule['runas']['users'] { -%>
 <%         if $rule['runas']['groups'] { -%>
-<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = (<%= $rule['runas']['users'].join(',') %>:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $commands.join(', ') %>
+<%=          $users %> <%= $hosts %> = (<%= $rule['runas']['users'].join(',') %>:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $commands %>
 <%         } else { -%>
-<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = (<%= $rule['runas']['users'].join(',') %>) <%= $options %> <%= $commands.join(', ') %>
+<%=          $users %> <%= $hosts %> = (<%= $rule['runas']['users'].join(',') %>) <%= $options %> <%= $commands %>
 <%         } -%>
 <%       } else { -%>
 <%         if $rule['runas']['groups'] { -%>
-<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = (:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $commands.join(', ') %>
+<%=          $users %> <%= $hosts %> = (:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $commands %>
 <%         } else { -%>
-<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = <%= $options %> <%= $commands.join(', ') %>
+<%=          $users %> <%= $hosts %> = <%= $options %> <%= $commands.join %>
 <%         } -%>
 <%       } -%>
 <%     } else { -%>
-<%=       $rule['users'].join(',') %> <%= $hosts.join(',') %> = <%= $options %> <%= $commands.join(', ') %>
+<%=       $users %> <%= $hosts %> = <%= $options %> <%= $commands %>
 <%     } -%>
 <%   } -%>
 <% } -%>
