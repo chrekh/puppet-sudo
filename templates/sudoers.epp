@@ -46,22 +46,23 @@ Cmnd_Alias <%= $name %> = <%= $value.join(', ') %>
 <%     } else { -%>
 <%       $options = '' -%>
 <%     } -%>
+<%     if $rule['hosts'] { $hosts = $rule['hosts'] } else { $hosts = ['ALL'] } -%>
 <%     if $rule['runas'] { -%>
 <%       if $rule['runas']['users'] { -%>
 <%         if $rule['runas']['groups'] { -%>
-<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = (<%= $rule['runas']['users'].join(',') %>:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
+<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = (<%= $rule['runas']['users'].join(',') %>:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
 <%         } else { -%>
-<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = (<%= $rule['runas']['users'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
+<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = (<%= $rule['runas']['users'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
 <%         } -%>
 <%       } else { -%>
 <%         if $rule['runas']['groups'] { -%>
-<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = (:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
+<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = (:<%= $rule['runas']['groups'].join(',') %>) <%= $options %> <%= $rule['commands'].join(', ') %>
 <%         } else { -%>
-<%=          $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = <%= $options %> <%= $rule['commands'].join(', ') %>
+<%=          $rule['users'].join(',') %> <%= $hosts.join(',') %> = <%= $options %> <%= $rule['commands'].join(', ') %>
 <%         } -%>
 <%       } -%>
 <%     } else { -%>
-<%=       $rule['users'].join(',') %> <%= $rule['hosts'].join(',') %> = <%= $options %> <%= $rule['commands'].join(', ') %>
+<%=       $rule['users'].join(',') %> <%= $hosts.join(',') %> = <%= $options %> <%= $rule['commands'].join(', ') %>
 <%     } -%>
 <%   } -%>
 <% } -%>
