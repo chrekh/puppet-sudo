@@ -37,7 +37,7 @@ The value for $sudo::conf[file] can be one of:
 * cmnd_alias
 * user_specs
 
-## Example
+## Hiera example
 
 ```yaml
 sudo::conf:
@@ -59,3 +59,7 @@ Defaults insults
 ## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
 #includedir /etc/sudoers.d
 ```
+
+There is also a quite large example in [HIERA_EXAMPLE.md](HIERA_EXAMPLE.md)
+based on the examples in sudoers(5), which will results in
+/etc/sudoers.d/example with content [EXAMPLE.md](EXAMPLE.md)
