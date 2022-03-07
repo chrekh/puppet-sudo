@@ -1,8 +1,11 @@
 # sudo
 
+Puppet module for configuring sudo. **Not yet ready for production!**
+
 ## Table of Contents
 
 1. [Description](#description)
+1. [Todo](#todo)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Example - Hiera example of sudo configuration](#example)
 
@@ -10,8 +13,20 @@
 
 Installs and configures sudo.
 
-This modules can setup most features described in sudoers(5), both in one main
-files, and in separate files located in a includedir (/etc/sudoers.d)
+This modules can configure most features described in sudoers(5), both in one
+main files, and in separate files located in a includedir (/etc/sudoers.d)
+
+## Todo
+
+There still remains some work to do before this can be used in production
+environments. Use this only for testing it.  I appreciate suggestions for
+improvements (preferably by pull requests)
+
+Since the most important method for controlling this module is with the quite
+complex hash $sudo::conf the datastructure needs to be documented a lot
+more. For now it's mainly documented by example.
+
+The datastructure for $sudo::conf might also need some redesigning.
 
 ## Usage
 
