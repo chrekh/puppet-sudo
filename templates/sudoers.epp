@@ -37,10 +37,10 @@ Host_Alias <%= $name %> = <%= $value.join(', ') %>
 Cmnd_Alias <%= $name %> = <%= $value.join(', ') %>
 <%   } -%>
 <% } -%>
-<% if $rules { -%>
+<% if $user_specs { -%>
 
-# Rules
-<%   $rules.each |$rule| { -%>
+# User specification
+<%   $user_specs.each |$rule| { -%>
 <%     if $rule['options'] { -%>
 <%       $options = $rule['options'].join(' ') -%>
 <%     } else { -%>

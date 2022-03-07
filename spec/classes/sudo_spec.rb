@@ -79,7 +79,7 @@ describe 'sudo' do
                 '/usr/bin/lprm',
               ],
             },
-            rules: [
+            user_specs: [
               {
                 commands: [
                   '/bin/id',
@@ -105,7 +105,7 @@ describe 'sudo' do
                 ]
               },
             ],
-            rules: [
+            user_specs: [
               commands: [
                 '/bin/id',
               ],

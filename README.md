@@ -35,7 +35,7 @@ The value for $sudo::conf[file] can be one of:
 * runas_alias
 * host_alias
 * cmnd_alias
-* rules
+* user_specs
 
 ## Example
 

@@ -36,7 +36,7 @@ class sudo::config {
           runas_alias => $conf['runas_alias'],
           host_alias  => $conf['host_alias'],
           cmnd_alias  => $conf['cmnd_alias'],
-          rules       => $conf['rules'],
+          user_specs  => $conf['user_specs'],
         })
       }
     }
