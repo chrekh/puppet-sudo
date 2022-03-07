@@ -2,9 +2,10 @@
   "name": "chrekh-sudo",
   "version": "0.1.0",
   "author": "chrekh",
-  "summary": "",
+  "summary": "Installs and configures sudo.",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/chrekh/puppet-sudo",
+  "issues_url": "https://github.com/chrekh/puppet-sudo",
   "dependencies": [
 
   ],
