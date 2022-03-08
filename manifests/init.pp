@@ -14,6 +14,8 @@
 #   The main configuration file for the sudoers plugin.
 # @param includedir
 #   The dropin directory for additional config files.
+# @param purge_includedir
+#   Purge any files in $includedir not explicitly managed by this class.
 # @param includedir_mode
 #   The filemode for the includedir
 # @param defaultmode
@@ -31,6 +33,7 @@ class sudo (
   Optional[String] $package_provider = undef,
   Stdlib::Unixpath $sudoers          = '/etc/sudoers',
   Stdlib::Unixpath $includedir       = '/etc/sudoers.d',
+  Boolean $purge_includedir          = false,
   Stdlib::Filemode $includedir_mode  = '750',
   Stdlib::Filemode $defaultmode      = '440',
   String[1] $owner                   = 'root',

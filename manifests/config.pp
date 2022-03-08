@@ -5,10 +5,12 @@ class sudo::config {
   if $sudo::conf {
     if $sudo::use_includedir {
       file { $sudo::includedir:
-        ensure => directory,
-        owner  => $sudo::owner,
-        group  => $sudo::group,
-        mode   => $sudo::includedir_mode,
+        ensure  => directory,
+        owner   => $sudo::owner,
+        group   => $sudo::group,
+        mode    => $sudo::includedir_mode,
+        recurse => $sudo::purge_includedir,
+        purge   => $sudo::purge_includedir,
       }
     }
     $sudo::conf.each | $destination,$conf | {
