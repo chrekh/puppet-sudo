@@ -75,6 +75,6 @@ Defaults insults
 #includedir /etc/sudoers.d
 ```
 
-There is also a quite large example in [HIERA_EXAMPLE.md](HIERA_EXAMPLE.md)
+There is also a quite large example in [HIERA_EXAMPLE.md](https://github.com/chrekh/puppet-sudo/blob/main/HIERA_EXAMPLE.md)
 based on the examples in sudoers(5), which will results in
-/etc/sudoers.d/example with content [EXAMPLE.md](EXAMPLE.md)
+/etc/sudoers.d/example with content [EXAMPLE.md](https://github.com/chrekh/puppet-sudo/blob/main/EXAMPLE.md)
