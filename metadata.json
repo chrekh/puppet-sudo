@@ -21,9 +21,6 @@
       "operatingsystem": "RedHat"
     },
     {
-      "operatingsystem": "Darwin"
-    },
-    {
       "operatingsystem": "FreeBSD"
     }
   ],
