@@ -1,11 +1,5 @@
-# Changelog
+## 0.1.1
+### Mar 13 2022
 
-All notable changes to this project will be documented in this file.
-
-## Release 0.1.0
-
-**Features**
-
-**Bugfixes**
-
-**Known Issues**
+* Add parameters purge_includedir, manage_sudoers
+* Add default sudoers config for RedHat FreeBSD and Gentoo
