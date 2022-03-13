@@ -15,6 +15,13 @@ describe 'sudo' do
 
     it { is_expected.to contain_file('/etc/sudoers').without_content(%r{^#includedir}) }
   end
+  context 'with manage_sudoers=false' do
+    let(:params) do
+      { manage_sudoers: false }
+    end
+
+    it { is_expected.not_to contain_file('/etc/sudoers') }
+  end
   context 'with some config' do
     let(:params) do
       {

@@ -25,21 +25,23 @@ class sudo::config {
         $require_includedir = File[$sudo::includedir]
       }
       $filemode = if $conf['mode'] { $conf['mode'] } else { $sudo::defaultmode }
-      file { $file:
-        ensure  => file,
-        require => $require_includedir,
-        owner   => $sudo::owner,
-        group   => $sudo::group,
-        mode    => $filemode,
-        content => epp('sudo/sudoers.epp',{
-          dest        => $destination,
-          defaults    => $conf['defaults'],
-          user_alias  => $conf['user_alias'],
-          runas_alias => $conf['runas_alias'],
-          host_alias  => $conf['host_alias'],
-          cmnd_alias  => $conf['cmnd_alias'],
-          user_specs  => $conf['user_specs'],
-        })
+      if $sudo::manage_sudoers or $destination != '_sudoers' {
+        file { $file:
+          ensure  => file,
+          require => $require_includedir,
+          owner   => $sudo::owner,
+          group   => $sudo::group,
+          mode    => $filemode,
+          content => epp('sudo/sudoers.epp',{
+            dest        => $destination,
+            defaults    => $conf['defaults'],
+            user_alias  => $conf['user_alias'],
+            runas_alias => $conf['runas_alias'],
+            host_alias  => $conf['host_alias'],
+            cmnd_alias  => $conf['cmnd_alias'],
+            user_specs  => $conf['user_specs'],
+          })
+        }
       }
     }
   }

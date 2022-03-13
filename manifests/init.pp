@@ -12,6 +12,8 @@
 #   Override the default package provider.
 # @param sudoers
 #   The main configuration file for the sudoers plugin.
+# @param manage_sudoers
+#   Don't manage the primary sudoers file is this is false.
 # @param includedir
 #   The dropin directory for additional config files.
 # @param purge_includedir
@@ -32,6 +34,7 @@ class sudo (
   String[1] $package_ensure          = 'present',
   Optional[String] $package_provider = undef,
   Stdlib::Unixpath $sudoers          = '/etc/sudoers',
+  Boolean $manage_sudoers            = true,
   Stdlib::Unixpath $includedir       = '/etc/sudoers.d',
   Boolean $purge_includedir          = false,
   Stdlib::Filemode $includedir_mode  = '750',
