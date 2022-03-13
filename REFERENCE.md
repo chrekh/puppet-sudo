@@ -38,7 +38,9 @@ The following parameters are available in the `sudo` class:
 * [`package_ensure`](#package_ensure)
 * [`package_provider`](#package_provider)
 * [`sudoers`](#sudoers)
+* [`manage_sudoers`](#manage_sudoers)
 * [`includedir`](#includedir)
+* [`purge_includedir`](#purge_includedir)
 * [`includedir_mode`](#includedir_mode)
 * [`defaultmode`](#defaultmode)
 * [`owner`](#owner)
@@ -86,6 +88,14 @@ The main configuration file for the sudoers plugin.
 
 Default value: `'/etc/sudoers'`
 
+##### <a name="manage_sudoers"></a>`manage_sudoers`
+
+Data type: `Boolean`
+
+Don't manage the primary sudoers file is this is false.
+
+Default value: ``true``
+
 ##### <a name="includedir"></a>`includedir`
 
 Data type: `Stdlib::Unixpath`
@@ -93,6 +103,14 @@ Data type: `Stdlib::Unixpath`
 The dropin directory for additional config files.
 
 Default value: `'/etc/sudoers.d'`
+
+##### <a name="purge_includedir"></a>`purge_includedir`
+
+Data type: `Boolean`
+
+Purge any files in $includedir not explicitly managed by this class.
+
+Default value: ``false``
 
 ##### <a name="includedir_mode"></a>`includedir_mode`
 
