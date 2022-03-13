@@ -1,7 +1,4 @@
 ---
-sudo::sudoers: /usr/local/etc/sudoers
-sudo::includedir: /usr/local/etc/sudoers.d
-sudo::group: wheel
 sudo::conf:
   _sudoers:
     user_specs:
@@ -11,6 +8,8 @@ sudo::conf:
           - ALL
         runas:
           users:
+            - ALL
+          groups:
             - ALL
         commands:
           - ALL
