@@ -26,6 +26,16 @@ sudo::conf:
     user_specs:
       - users:
           - root
+        hosts:
+          - ALL
+        runas:
+          users:
+            - ALL
+          groups:
+            - ALL
+        commands:
+          - ALL
+      - users:
           - '%wheel'
         hosts:
           - ALL
