@@ -44,13 +44,18 @@ $sudo::includedir (normally /etc/sudoers.d)
 
 The value for $sudo::conf[file] can be one of:
 
-* mode, the file permission mode for the file, default $sudo::defaultmode
-* defaults, defaults specifications as described by sudoers(5)
-* user_alias
-* runas_alias
-* host_alias
-* cmnd_alias
-* user_specs
+* mode, File permission mode for the file, default $sudo::defaultmode
+* defaults, Defaults specifications as described by sudoers(5)
+* user_alias, A hash whith array of users.
+* runas_alias, A hash with array of target users.
+* host_alias, A hash with array of hosts.
+* cmnd_alias, A hash with array of commands.
+* user_specs, A array of hashes with user specs with
+** users: Array of users
+** runas: Hash of target user & group
+** options: Array of options
+** commands: Array of commands
+
 
 ## Hiera example
 
