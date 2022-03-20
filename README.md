@@ -80,7 +80,7 @@ sudo::conf:
     defaults:
       - Defaults:
           - insults
-          - '!alwayw_set_home'
+          - '!always_set_home'
 ```
 
 This will result in /etc/sudoers on os[family] RedHat containing
@@ -99,7 +99,7 @@ Defaults env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
 Defaults env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
 Defaults env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
 Defaults secure_path = /sbin:/bin:/usr/sbin:/usr/bin
-Defaults insults, !alwayw_set_home
+Defaults insults, !always_set_home
 
 # User specification
 root ALL = (ALL:ALL)  ALL
