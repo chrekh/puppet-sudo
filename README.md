@@ -56,28 +56,73 @@ The value for $sudo::conf[file] can be one of:
 ** options: Array of options
 ** commands: Array of commands
 
+## Note about default value for sudo::conf[_sudoers]
+
+My objective is to provide os-dependent value for the generated sudoers that is
+similar to the default sudoers on that os. This might cause difficulties to
+generate wanted content, so I might remove the os-dependent defaults in later
+releases.  Let me know your opinion on this.
+
+For example the default on os[family] RedHat is to have
+"Defaults always_set_home", if that is not desirable you can chose to negate it
+by adding !always_set_home
 
 ## Hiera example
 
 ```yaml
+---
+lookup_options:
+  sudo::conf:
+    merge:
+      strategy: deep
 sudo::conf:
   _sudoers:
     defaults:
       - Defaults:
           - insults
+          - '!alwayw_set_home'
 ```
 
-This will result in /etc/sudoers containing
+This will result in /etc/sudoers on os[family] RedHat containing
 
 ```
 ## Managed by puppet class sudo
 ## Do not edit
 
 # Override built-in defaults
-Defaults insults
+Defaults !visiblepw, always_set_home
+Defaults match_group_by_gid, always_query_group_plugin
+Defaults env_reset
+Defaults env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS"
+Defaults env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+Defaults env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+Defaults env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+Defaults env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+Defaults secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+Defaults insults, !alwayw_set_home
+
+# User specification
+root ALL = (ALL:ALL)  ALL
+%wheel ALL = (ALL:ALL)  ALL
 
 ## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
 #includedir /etc/sudoers.d
+```
+
+... and /usr/local/etc/sudoers on os[family] FreeBSD with
+
+```
+## Managed by puppet class sudo
+## Do not edit
+
+# Override built-in defaults
+Defaults insults, !alwayw_set_home
+
+# User specification
+root ALL = (ALL)  ALL
+
+## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /usr/local/etc/sudoers.d
 ```
 
 There is also a quite large example in [HIERA_EXAMPLE.md](https://github.com/chrekh/puppet-sudo/blob/main/HIERA_EXAMPLE.md)
