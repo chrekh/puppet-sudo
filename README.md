@@ -51,10 +51,10 @@ The value for $sudo::conf[file] can be one of:
 * host_alias, A hash with array of hosts.
 * cmnd_alias, A hash with array of commands.
 * user_specs, A array of hashes with user specs with
-** users: Array of users
-** runas: Hash of target user & group
-** options: Array of options
-** commands: Array of commands
+  - users: Array of users
+  - runas: Hash of target user & group
+  - options: Array of options
+  - commands: Array of commands
 
 ## Note about default value for sudo::conf[_sudoers]
 
