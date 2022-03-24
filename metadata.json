@@ -21,6 +21,12 @@
       "operatingsystem": "RedHat"
     },
     {
+      "operatingsystem": "Debian"
+    },
+    {
+      "operatingsystem": "Archlinux"
+    },
+    {
       "operatingsystem": "FreeBSD"
     }
   ],
