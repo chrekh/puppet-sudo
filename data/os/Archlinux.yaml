@@ -1,0 +1,13 @@
+---
+sudo::conf:
+  _sudoers:
+    user_specs:
+      - users:
+          - root
+        hosts:
+          - ALL
+        runas:
+          users:
+            - ALL
+        commands:
+          - ALL
