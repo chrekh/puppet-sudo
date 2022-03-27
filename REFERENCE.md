@@ -84,7 +84,9 @@ Default value: ``undef``
 
 Data type: `Stdlib::Unixpath`
 
-The main configuration file for the sudoers plugin.
+The main configuration file for the sudoers plugin. Default is
+/usr/local/etc/sudoers on FreeBSD, and /etc/sudoers on all other
+osfamilies.
 
 Default value: `'/etc/sudoers'`
 
@@ -100,7 +102,9 @@ Default value: ``true``
 
 Data type: `Stdlib::Unixpath`
 
-The dropin directory for additional config files.
+The dropin directory for additional config files. Default is
+/usr/local/etc/sudoers.d on FreeBSD, and /etc/sudoers.d on all other
+osfamilies.
 
 Default value: `'/etc/sudoers.d'`
 
@@ -156,7 +160,11 @@ Default value: ``true``
 
 Data type: `Hash[String,Hash[String,Optional[Any]]]`
 
-
+This is the most important controll-structure for configuring sudo. It
+consists of a hash with the first level key is the destination file (under
+$includedir), or the special value "_sudoers" for the content of the master
+sudoers file. There is a default content for this that differs for some
+os-families.
 
 Default value: ``undef``
 

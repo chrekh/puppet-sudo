@@ -13,8 +13,15 @@ Puppet module for configuring sudo. **Not yet ready for production!**
 
 Installs and configures sudo.
 
-This modules can configure most features described in sudoers(5), both in one
-main files, and in separate files located in a includedir (/etc/sudoers.d)
+This modules can configure most features described in sudoers(5), both in the
+master sudoers file, and in separate files located in a includedir
+(/etc/sudoers.d). My motivation for creating this module even when there is
+several modules for sudo available already, is to be able to to generate all
+possible sudoers(5) content, using structured data merged from possibly several
+hiera levels.
+
+Note that there is no verification of the resulting sudoers files, so it's very
+possible to generate sudoers content that breaks sudo.
 
 ## Todo
 
