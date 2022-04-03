@@ -94,7 +94,7 @@ Default value: `'/etc/sudoers'`
 
 Data type: `Boolean`
 
-Don't manage the primary sudoers file is this is false.
+Manage the primary sudoers file if true.
 
 Default value: ``true``
 
@@ -128,7 +128,7 @@ Default value: `'750'`
 
 Data type: `Stdlib::Filemode`
 
-The mode for creates files in includedir.
+The mode for created files.
 
 Default value: `'440'`
 
@@ -160,7 +160,7 @@ Default value: ``true``
 
 Data type: `Hash[String,Hash[String,Optional[Any]]]`
 
-This is the most important controll-structure for configuring sudo. It
+This is the most important control-structure for configuring sudo. It
 consists of a hash with the first level key is the destination file (under
 $includedir), or the special value "_sudoers" for the content of the master
 sudoers file. There is a default content for this that differs for some

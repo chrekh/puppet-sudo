@@ -18,7 +18,7 @@
 #   /usr/local/etc/sudoers on FreeBSD, and /etc/sudoers on all other
 #   osfamilies.
 # @param manage_sudoers
-#   Don't manage the primary sudoers file is this is false.
+#   Manage the primary sudoers file if true.
 # @param includedir
 #   The dropin directory for additional config files. Default is
 #   /usr/local/etc/sudoers.d on FreeBSD, and /etc/sudoers.d on all other
@@ -28,7 +28,7 @@
 # @param includedir_mode
 #   The filemode for the includedir
 # @param defaultmode
-#   The mode for creates files in includedir.
+#   The mode for created files.
 # @param owner
 #   The owner for sudo configfiles.
 # @param group
@@ -36,7 +36,7 @@
 # @param use_includedir
 #   Add entry for includedir to main sudoer file if true.
 # @param conf
-#   This is the most important controll-structure for configuring sudo. It
+#   This is the most important control-structure for configuring sudo. It
 #   consists of a hash with the first level key is the destination file (under
 #   $includedir), or the special value "_sudoers" for the content of the master
 #   sudoers file. There is a default content for this that differs for some
