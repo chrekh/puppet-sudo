@@ -3,7 +3,13 @@
 require 'spec_helper'
 
 describe 'sudo' do
-  it { is_expected.to compile }
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
+
+      it { is_expected.to compile }
+    end
+  end
   context 'with defaults for all parameters' do
     it { is_expected.to contain_file('/etc/sudoers') }
     it { is_expected.to contain_file('/etc/sudoers').with_content(%r{^#includedir /etc/sudoers.d$}) }
