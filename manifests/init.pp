@@ -55,7 +55,7 @@ class sudo (
   String[1] $owner                   = 'root',
   String[1] $group                   = 'root',
   Boolean $use_includedir            = true,
-  Hash[String,Hash[String,Optional[Any]]] $conf = undef,
+  Hash[String,Hash[String,Optional[Any]]] $conf = { '_sudoers' => {} }
 ) {
   contain sudo::config
   if $install_package {

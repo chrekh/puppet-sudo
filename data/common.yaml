@@ -1,4 +1,0 @@
----
-sudo::conf:
-  _sudoers:
-    mode: '0440'
