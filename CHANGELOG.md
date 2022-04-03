@@ -1,3 +1,10 @@
+## 0.1.3
+### Apr  3 2022
+
+* Update README with request for feedback about default sudoers conf.
+* Add some extra spectest for FreeBSD.
+* Support for older puppet (5.5)
+
 ## 0.1.2
 ### Mar 27 2022
 
