@@ -10,6 +10,24 @@ describe 'sudo' do
       it { is_expected.to compile }
     end
   end
+  context 'on freebsd' do
+    let(:facts) do
+      {
+        os: {
+          family: 'FreeBSD',
+        }
+      }
+    end
+
+    it { is_expected.to compile }
+    it do
+      is_expected.to contain_file('/usr/local/etc/sudoers').with(
+                       'owner' => 'root',
+                       'group' => 'wheel',
+                       'mode'  => '0440',
+                     ).with_content(%r{^root ALL = \(ALL\)  ALL$})
+    end
+  end
   context 'with defaults for all parameters' do
     it { is_expected.to contain_file('/etc/sudoers') }
     it { is_expected.to contain_file('/etc/sudoers').with_content(%r{^#includedir /etc/sudoers.d$}) }
