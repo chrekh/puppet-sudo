@@ -1,6 +1,7 @@
 # sudo
 
 Puppet module for configuring sudo. **Not yet ready for production!**
+there is still a important decision to make about default sudoers config.
 
 ## Table of Contents
 
@@ -25,15 +26,13 @@ possible to generate sudoers content that breaks sudo.
 
 ## Todo
 
-There still remains some work to do before this can be used in production
-environments. Use this only for testing it.  I appreciate suggestions for
-improvements (preferably by pull requests)
+I have still not decided if it's a good idea to provide os-dependent default
+configuration for the primary sudoers file.  I need to make a definitive
+decision before releasing 1.0
 
-Since the most important method for controlling this module is with the quite
-complex hash $sudo::conf the datastructure needs to be documented a lot
-more. For now it's mainly documented by example.
+If you test this module, pleas tell me your opinion about this, either by mail
+to che@chrekh.se or using the issues url.
 
-The datastructure for $sudo::conf might also need some redesigning.
 
 ## Usage
 
