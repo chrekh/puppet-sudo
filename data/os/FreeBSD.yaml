@@ -2,15 +2,3 @@
 sudo::sudoers: /usr/local/etc/sudoers
 sudo::includedir: /usr/local/etc/sudoers.d
 sudo::group: wheel
-sudo::conf:
-  _sudoers:
-    user_specs:
-      - users:
-          - root
-        hosts:
-          - ALL
-        runas:
-          users:
-            - ALL
-        commands:
-          - ALL

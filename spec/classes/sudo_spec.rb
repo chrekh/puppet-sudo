@@ -25,7 +25,7 @@ describe 'sudo' do
                        'owner' => 'root',
                        'group' => 'wheel',
                        'mode'  => '0440',
-                     ).with_content(%r{^root ALL = \(ALL\)  ALL$})
+                     )
     end
   end
   context 'with defaults for all parameters' do
