@@ -32,15 +32,15 @@ class sudo::config {
           owner   => $sudo::owner,
           group   => $sudo::group,
           mode    => $filemode,
-          content => epp('sudo/sudoers.epp',{
-            dest        => $destination,
-            defaults    => $conf['defaults'],
-            user_alias  => $conf['user_alias'],
-            runas_alias => $conf['runas_alias'],
-            host_alias  => $conf['host_alias'],
-            cmnd_alias  => $conf['cmnd_alias'],
-            user_specs  => $conf['user_specs'],
-          })
+          content => epp('sudo/sudoers.epp', {
+              dest        => $destination,
+              defaults    => $conf['defaults'],
+              user_alias  => $conf['user_alias'],
+              runas_alias => $conf['runas_alias'],
+              host_alias  => $conf['host_alias'],
+              cmnd_alias  => $conf['cmnd_alias'],
+              user_specs  => $conf['user_specs'],
+          }),
         }
       }
     }
