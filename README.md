@@ -52,12 +52,13 @@ The value for $sudo::conf[file] can be one of:
 
 ## Note about default value for sudo::conf[_sudoers]
 
-There is no default value for sudo::conf[_sudoers] which means that unless you
-provide configuration for sudo::conf[_sudoers] the main sudoers file will be
-cleared (except for the include directive if sudo::use_includedir is true)
-wiping whatever your OS/Distribution have provided.
+The default value for sudo::conf[_sudoers] only contains the rule to allow root
+to run sudo. Which means that unless you provide configuration for
+sudo::conf[_sudoers] the main sudoers file will be cleared (except for root and
+the include directive if sudo::use_includedir is true) wiping whatever your
+OS/Distribution have provided.
 
-My arguments against providing a distribution-specific defaults is
+My arguments against providing a distribution-specific defaults is:
 
 * It's easier to mainain a consistent sudoers configuration in a environment
   consistiong of multiple distributions.
@@ -67,6 +68,7 @@ My arguments against providing a distribution-specific defaults is
 
 * Future changes made by distributions would not be included unless I regularly
   adapted them here also.
+
 
 ## Hiera example
 
@@ -92,6 +94,9 @@ This will result in sudoers file containing.
 
 # Override built-in defaults
 Defaults insults, !always_set_home
+
+# User specification
+root ALL = (ALL:ALL)  ALL
 
 ## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
 #includedir /etc/sudoers.d
