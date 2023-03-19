@@ -70,6 +70,6 @@ Cmnd_Alias <%= $name %> = <%= $value.join(', ') %>
 <% } -%>
 <% if $sudo::use_includedir and $dest == '_sudoers' { -%>
 
-## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+## Read drop-in files from <%= $sudo::includedir %> (the # here does not mean a comment)
 #includedir <%= $sudo::includedir %>
 <% } -%>
