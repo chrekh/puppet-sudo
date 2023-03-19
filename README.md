@@ -4,7 +4,6 @@ Puppet module for configuring sudo.
 ## Table of Contents
 
 1. [Description](#description)
-1. [Todo](#todo)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Example - Hiera example of sudo configuration](#example)
 
