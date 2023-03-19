@@ -39,8 +39,8 @@
 #   This is the most important control-structure for configuring sudo. It
 #   consists of a hash with the first level key is the destination file (under
 #   $includedir), or the special value "_sudoers" for the content of the master
-#   sudoers file. There is a default content for this that differs for some
-#   os-families.
+#   sudoers file. There is a default content for this that permits root to run
+#   sudo.
 class sudo (
   Boolean $install_package           = true,
   String[1] $package_name            = 'sudo',
