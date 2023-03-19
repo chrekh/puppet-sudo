@@ -122,7 +122,7 @@ Data type: `Stdlib::Filemode`
 
 The filemode for the includedir
 
-Default value: `'750'`
+Default value: `'0750'`
 
 ##### <a name="defaultmode"></a>`defaultmode`
 
@@ -130,7 +130,7 @@ Data type: `Stdlib::Filemode`
 
 The mode for created files.
 
-Default value: `'440'`
+Default value: `'0440'`
 
 ##### <a name="owner"></a>`owner`
 
@@ -163,8 +163,8 @@ Data type: `Hash[String,Hash[String,Optional[Any]]]`
 This is the most important control-structure for configuring sudo. It
 consists of a hash with the first level key is the destination file (under
 $includedir), or the special value "_sudoers" for the content of the master
-sudoers file. There is a default content for this that differs for some
-os-families.
+sudoers file. There is a default content for this that permits root to run
+sudo.
 
-Default value: ``undef``
+Default value: `{ '_sudoers' => {} }`
 
