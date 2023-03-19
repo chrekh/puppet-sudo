@@ -1,3 +1,8 @@
+## 1.0.0
+### Mar 19 2023
+
+* Don't provide distribution specific defaults sudoers.conf
+
 ## 0.1.3
 ### Apr  3 2022
 
