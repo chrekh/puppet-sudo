@@ -59,7 +59,7 @@ OS/Distribution have provided.
 
 My arguments against providing a distribution-specific defaults is:
 
-* It's easier to mainain a consistent sudoers configuration in a environment
+* It's easier to maintain a consistent sudoers configuration in a environment
   consistiong of multiple distributions.
 
 * By not having any settings in main sudoers file the defaults are determined
