@@ -1,3 +1,8 @@
+## 1.0.1
+### Mar 25 2023
+
+* Add syntax validation using visudo -c
+
 ## 1.0.0
 ### Mar 19 2023
 

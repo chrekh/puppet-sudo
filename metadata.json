@@ -1,6 +1,6 @@
 {
   "name": "chrekh-sudo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "chrekh",
   "summary": "Installs and configures sudo.",
   "license": "Apache-2.0",
