@@ -27,12 +27,13 @@ class sudo::config {
       $filemode = if $conf['mode'] { $conf['mode'] } else { $sudo::defaultmode }
       if $sudo::manage_sudoers or $destination != '_sudoers' {
         file { $file:
-          ensure  => file,
-          require => $require_includedir,
-          owner   => $sudo::owner,
-          group   => $sudo::group,
-          mode    => $filemode,
-          content => epp('sudo/sudoers.epp', {
+          ensure       => file,
+          require      => $require_includedir,
+          owner        => $sudo::owner,
+          group        => $sudo::group,
+          mode         => $filemode,
+          validate_cmd => $sudo::validate_cmd,
+          content      => epp('sudo/sudoers.epp', {
               dest        => $destination,
               defaults    => $conf['defaults'],
               user_alias  => $conf['user_alias'],

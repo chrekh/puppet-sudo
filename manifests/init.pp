@@ -55,6 +55,7 @@ class sudo (
   String[1] $owner                   = 'root',
   String[1] $group                   = 'root',
   Boolean $use_includedir            = true,
+  String[1] $validate_cmd            = '/usr/sbin/visudo -sc %',
   Hash[String,Hash[String,Optional[Any]]] $conf = { '_sudoers' => {} }
 ) {
   contain sudo::config
