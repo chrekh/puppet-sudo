@@ -46,6 +46,7 @@ The following parameters are available in the `sudo` class:
 * [`owner`](#owner)
 * [`group`](#group)
 * [`use_includedir`](#use_includedir)
+* [`validate_cmd`](#validate_cmd)
 * [`conf`](#conf)
 
 ##### <a name="install_package"></a>`install_package`
@@ -155,6 +156,14 @@ Data type: `Boolean`
 Add entry for includedir to main sudoer file if true.
 
 Default value: ``true``
+
+##### <a name="validate_cmd"></a>`validate_cmd`
+
+Data type: `String[1]`
+
+Command used to check created sudoers files for syntax errors.
+
+Default value: `'/sbin/visudo -sc %'`
 
 ##### <a name="conf"></a>`conf`
 

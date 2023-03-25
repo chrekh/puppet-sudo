@@ -18,8 +18,9 @@ several modules for sudo available already, is to be able to to generate all
 possible sudoers(5) content, using structured data merged from possibly several
 hiera levels.
 
-Note that there is no verification of the resulting sudoers files, so it's very
-possible to generate sudoers content that breaks sudo.
+Note that even if the individual files created are validated using
+$sudo::validate_cmd there is no guarantee that the resulting sudo configuration
+doesn't contain syntax errors that breaks sudo.
 
 ## Usage
 

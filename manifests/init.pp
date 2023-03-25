@@ -35,6 +35,8 @@
 #   The group for sudo configfiles.
 # @param use_includedir
 #   Add entry for includedir to main sudoer file if true.
+# @param validate_cmd
+#   Command used to check created sudoers files for syntax errors.
 # @param conf
 #   This is the most important control-structure for configuring sudo. It
 #   consists of a hash with the first level key is the destination file (under
