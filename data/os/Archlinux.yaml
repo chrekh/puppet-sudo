@@ -1,0 +1,2 @@
+---
+sudo::validate_cmd: '/usr/bin/visudo -sc %'

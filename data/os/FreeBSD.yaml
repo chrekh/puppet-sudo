@@ -1,4 +1,5 @@
 ---
+sudo::validate_cmd: '/usr/local/sbin/visudo -sc %'
 sudo::sudoers: /usr/local/etc/sudoers
 sudo::includedir: /usr/local/etc/sudoers.d
 sudo::group: wheel
